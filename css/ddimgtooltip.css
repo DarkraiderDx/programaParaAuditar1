@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ddimgtooltip{
+box-shadow: 3px 3px 5px #818181; /*shadow for CSS3 capable browsers.*/
+-webkit-box-shadow: 3px 3px 5px #818181;
+-moz-box-shadow: 3px 3px 5px #818181;
+display:none;
+border-radius:10px;
+position:absolute;
+border:3px solid #FFF;
+font-family:Verdana, Geneva, sans-serif;
+-webkit-transition:linear 0.8s;
+ -ms-transition:linear 0.8s;
+transition:linear 0.8s;
+
+color: black;
+z-index:2000;
+padding: 4px;
+background:#000000;
+
+
+
+}

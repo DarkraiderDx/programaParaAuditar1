@@ -1,0 +1,6 @@
+AuthUserFile /home/keoma/public_html/admin/.htpasswd
+AuthName "Password Protected Area"
+AuthType basic
+<Limit GET>
+require valid-user
+</Limit>

@@ -1,0 +1,26 @@
+<?php
+		
+	function usuario($tipo){
+		if($tipo=='a'){
+			return 'ADMINISTRADOR';
+		}elseif($tipo=='u'){
+			return 'USUARIO';
+		}
+	}
+	
+	function mensajes($mensaje,$tipo){
+		if($tipo=='verde'){
+			$tipo='alert alert-success';
+		}elseif($tipo=='rojo'){
+			$tipo='alert alert-error';
+		}elseif($tipo=='azul'){
+			$tipo='alert alert-info';
+		}
+		return '<div class="'.$tipo.'" align="center">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong>'.$mensaje.'</strong>
+            </div>';
+	}
+	
+	
+?>

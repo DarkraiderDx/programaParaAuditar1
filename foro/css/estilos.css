@@ -1,0 +1,43 @@
+/* CSS Document */
+body {
+	margin-left: 0px;
+	margin-top: 1px;
+	margin-right: 0px;
+	margin-bottom: 1px;
+}
+form {
+	margin: 0;
+	font-size: 14px;
+}
+/****************/
+.cuerpo {
+	/*border: 1px solid #003366;*/
+}
+.firma {
+	border: 1px solid #006699;
+}
+.textocategg {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+.textocateg {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+.textocateg A{
+	color:#000;
+	text-decoration:underline;
+}
+.textocateg A:hover{
+	color:#069;
+	text-decoration:none;
+}
+.textofirma {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+.textofirmapie {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#0099CC;
+}
