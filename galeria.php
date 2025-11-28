@@ -134,12 +134,12 @@ $("a[rel^='prettyPhoto_GaleriaFotos']").prettyPhoto({theme:'facebook'});
 </div>
 
   <?php $link=conectarse();
-$sql=mysql_query("select * from imagen order by fecha desc",$link);?>
+$sql=mysqli_query($link,"select * from imagen order by fecha desc");?>
 	<div id="central3" style="width:85%;" >
     <div style="width:100%; height:40px; padding-top:7px; text-align:left; padding-left:10px;text-shadow:0px 0px 2px #333333;    float:right; font-size: 20px; " class="titulo_donde" >Galeria de Imagenes del CDE-I</div>
  	
     <?php
-                while($fila=mysql_fetch_array($sql)){
+                while($fila=mysqli_fetch_array($sql)){
 	?>
 	<div class="label-warning" style="width:180px;height:180px; padding:10px;float:left;  border-radius:4px; margin-bottom:15px; margin-right:5px; margin-left:5px;box-shadow:0px 6px 8px #666;">
 	

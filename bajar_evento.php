@@ -1,13 +1,23 @@
 <?php
 session_start();
-	include("conexion.php");
-	$link=conectarse();
-	
-	$qry="Select * from eventos where id_evento={$_REQUEST['id']}";
-	$res=mysql_query($qry) or die(mysql_error()." qry::$qry");
-	$obj=mysql_fetch_object($res);		
-	header("Content-type: {$obj->tipo}");
-	header('Content-Disposition: attachment; filename="'.$obj->nombre_archivo.'"');
-	print $obj->archivo;
-	mysql_close();
+include("conexion.php");
+$link = conectarse();
+
+$id = intval($_REQUEST['id']); // seguridad
+
+$qry = "SELECT * FROM eventos WHERE id_evento = $id";
+$res = $link->query($qry);
+
+if (!$res) {
+    die("Error en la consulta: " . $link->error . " qry::$qry");
+}
+
+$obj = $res->fetch_object();
+
+header("Content-type: {$obj->tipo}");
+header('Content-Disposition: attachment; filename="'.$obj->nombre_archivo.'"');
+
+echo $obj->archivo;
+
+$link->close();
 ?>

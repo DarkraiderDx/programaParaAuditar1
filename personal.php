@@ -147,7 +147,7 @@ $(document).ready(function(){
               <?php if(isset($_SESSION['pas'])){?>
               
                 <div  >
-                  <div style=" height:10px; margin-bottom:10px; padding-bottom:15px; font-size:12px;  color:#000000;">Bienvenido..<?php  $pas=$_SESSION['pas'];$sqll=mysql_query("select * from usuarios where clave='$pas'",$link); $f=mysql_fetch_array($sqll);echo $f['nombre'];  ?>..<br><?php echo'<a  href="cerrar session.php" style="color:#FF0000;">Cerrar Sesión</a>';?></div>
+                  <div style=" height:10px; margin-bottom:10px; padding-bottom:15px; font-size:12px;  color:#000000;">Bienvenido..<?php  $pas=$_SESSION['pas'];$sqll=mysqli_query($link,"select * from usuarios where clave='$pas'"); $f=mysqli_fetch_array($sqll);echo $f['nombre'];  ?>..<br><?php echo'<a  href="cerrar session.php" style="color:#FF0000;">Cerrar Sesión</a>';?></div>
                   <ul>
 		
 		 <li class="btn btn-success" style="width:200px; margin-bottom:10px; margin-top:5px;" ><i class=" icon1-eye-open" style=" margin-right:5px;"></i><a style="color:#FFFFFF; width:200px;" href='ver_informacion.php'>Ver Informacion</a></li>
@@ -175,8 +175,8 @@ $(document).ready(function(){
 			<?php 
 		   
 		  $link=conectarse();
-		  $res=mysql_query("select * from administracion  ",$link);
-		  while($fila=mysql_fetch_array($res))
+		  $res=mysqli_query($link,"select * from administracion  ");
+		  while($fila=mysqli_fetch_array($res))
 		  {
 	 		if($fila['imagen']=='')
 			{
@@ -265,8 +265,8 @@ $(document).ready(function(){
       <p>
               <?php 
 		   
-		  $res=mysql_query("select * from planificacion ",$link);
-		  while($fila=mysql_fetch_array($res))
+		  $res=mysqli_query($link,"select * from planificacion ");
+		  while($fila=mysqli_fetch_array($res))
 		  {
 	 		if($fila['imagen']==''){
 		  ?>
@@ -358,8 +358,8 @@ $(document).ready(function(){
       <p>
               <?php 
 		   
-		  $res=mysql_query("select * from direccion ",$link);
-		  while($fila=mysql_fetch_array($res))
+		  $res=mysqli_query($link,"select * from direccion ");
+		  while($fila=mysqli_fetch_array($res))
 		  {
 	  if($fila['imagen']==''){
 		  ?>
@@ -453,8 +453,8 @@ $(document).ready(function(){
       <p>
               <?php 
 		   
-		  $res=mysql_query("select * from reg_proyecto  ",$link);
-		  while($fila=mysql_fetch_array($res))
+		  $res=mysqli_query($link,"select * from reg_proyecto  ");
+		  while($fila=mysqli_fetch_array($res))
 		  {
 	  if($fila['imagen']==''){
 		  ?>

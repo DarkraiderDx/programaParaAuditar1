@@ -9,22 +9,22 @@ if((($usuario=='')||($password==''))){
 	}
 else{
 
-$sql=mysql_query("select * from administracion where correo = '$usuario' and clave='$password'",$link);
-$fila=mysql_fetch_assoc($sql);
+$sql=mysqli_query($link,"select * from administracion where correo = '$usuario' and clave='$password'");
+$fila=mysqli_fetch_assoc($sql);
 
-$sql1=mysql_query("select * from planificacion where correo = '$usuario' and clave='$password'",$link);
-$fila1=mysql_fetch_assoc($sql1);
+$sql1=mysqli_query($link,"select * from planificacion where correo = '$usuario' and clave='$password'");
+$fila1=mysqli_fetch_assoc($sql1);
 
-$sql2=mysql_query("select * from direccion where correo = '$usuario' and clave='$password'",$link);
-$fila2=mysql_fetch_assoc($sql2);
+$sql2=mysqli_query($link,"select * from direccion where correo = '$usuario' and clave='$password'");
+$fila2=mysqli_fetch_assoc($sql2);
 
-$sql3=mysql_query("select * from reg_proyecto where correo = '$usuario' and clave='$password'",$link);
-$fila3=mysql_fetch_assoc($sql3);
+$sql3=mysqli_query($link,"select * from reg_proyecto where correo = '$usuario' and clave='$password'");
+$fila3=mysqli_fetch_assoc($sql3);
 
-$sql4=mysql_query("select * from usuarios where correo = '$usuario' and clave='$password'",$link);
-$fila4=mysql_fetch_assoc($sql4);
+$sql4=mysqli_query($link,"select * from usuarios where correo = '$usuario' and clave='$password'");
+$fila4=mysqli_fetch_assoc($sql4);
 	
-//$result = mysql_query("SELECT * FROM personal WHERE correo = '$usuario' and clave='$password'",$link);
+//$result = mysql_query("SELECT * FROM personal WHERE correo = '$usuario' and clave='$password'");
 
 if($fila)
 {     
@@ -142,12 +142,12 @@ $men='Usuario  o clave Incorrecto ';
 }
 
 
-mysql_free_result($sql);
-mysql_free_result($sql1);
-mysql_free_result($sql2);
-mysql_free_result($sql3);
-mysql_free_result($sql4);
+mysqli_free_result($sql);
+mysqli_free_result($sql1);
+mysqli_free_result($sql2);
+mysqli_free_result($sql3);
+mysqli_free_result($sql4);
 
-mysql_close();
+mysqli_close();
 }
 ?>

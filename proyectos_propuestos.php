@@ -149,8 +149,8 @@ $(document).ready(function(){
 			  	$n=0;
 				$n1=1;
 		  
-		  $res=mysql_query("select * from proyectos where tipo='propuesto'order by id_proyecto desc",$link);
-		  while($fila=mysql_fetch_array($res))
+		  $res=mysqli_query($link,"select * from proyectos where tipo='propuesto'order by id_proyecto desc");
+		  while($fila=mysqli_fetch_array($res))
 		  {
 	 	
 		  ?>

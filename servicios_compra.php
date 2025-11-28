@@ -156,8 +156,8 @@ $(document).ready(function(){
      <h3 class="h1 ">Servicio de Compra</h3>
             <?php 
 		  $link=conectarse();
-		  $res=mysql_query("select * from servicios where tipo='compra' order by id_servicio DESC",$link);
-		  while($fila=mysql_fetch_array($res))
+		  $res=mysqli_query($link,"select * from servicios where tipo='compra' order by id_servicio DESC");
+		  while($fila=mysqli_fetch_array($res))
 		  {
 
 		  ?>

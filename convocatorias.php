@@ -178,7 +178,7 @@ $("a[rel^='prettyPhoto_GaleriaFotos']").prettyPhoto({theme:'facebook'});
 $n=0;
 $n1=1;
 
-$sql=mysql_query("select * from convocatorias order by id_convocatorias desc",$link);
+$sql=mysqli_query($link,"select * from convocatorias order by id_convocatorias desc");
 
 ?> <?php if(!isset($_GET['men'])){
 				
@@ -196,7 +196,7 @@ $sql=mysql_query("select * from convocatorias order by id_convocatorias desc",$l
               </tr>
               <?php 
 			  $n=1;
-while($fila=mysql_fetch_array($sql)){
+while($fila=mysqli_fetch_array($sql)){
 ?>
                 <tr>
                 

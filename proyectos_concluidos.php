@@ -149,9 +149,9 @@ $(document).ready(function(){
 			   $link=conectarse();
 			  	$n=0;
 				$n1=1;
-			   $query=mysql_query("select * from proyectos where tipo='concluido' order by id_proyecto desc",$link);
+			   $query=mysqli_query($link,"select * from proyectos where tipo='concluido' order by id_proyecto desc");
 			   
-            while($fila=mysql_fetch_array($query))
+            while($fila=mysqli_fetch_array($query))
 			{
 			?>
             <?php if($n==0){?>

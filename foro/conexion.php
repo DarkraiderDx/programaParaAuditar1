@@ -1,19 +1,21 @@
 <?php 
 function conectarse()
 {
-	if (!($link=mysql_connect("localhost","root","")))
-	{
-		echo "Error conectando a la base de datos.";
-		exit();
-	}
-	if (!mysql_select_db("cde_db",$link))
-	{
-		echo "Error seleccionando la base de datos.";
-		exit();
-	}
-	return $link;
+    // Crear conexión
+    $link = mysqli_connect("localhost", "root", "DarkraiderDx99", "cde_db");
+
+    // Verificar conexión
+    if (!$link) {
+        echo "Error conectando a la base de datos: " . mysqli_connect_error();
+        exit();
+    }
+
+    return $link;
 }
 
-$link=conectarse();
-mysql_close($link);
+// Conectar
+$link = conectarse();
+
+// Cerrar conexión
+mysqli_close($link);
 ?>

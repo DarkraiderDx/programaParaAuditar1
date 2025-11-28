@@ -130,7 +130,7 @@ $link=conectarse();
 $n=0;
 $n1=1;
 
-$sql=mysql_query("select * from eventos",$link);
+$sql=mysqli_query($link,"select * from eventos");
 
 ?>
             </p>
@@ -148,7 +148,7 @@ $sql=mysql_query("select * from eventos",$link);
                 <th><span class="h3">Archivo</span></th>
               </tr>
               <?php 
-while($fila=mysql_fetch_array($sql)){
+while($fila=mysqli_fetch_array($sql)){
 ?>
                 <tr>
                 <?php if($n==0){?>

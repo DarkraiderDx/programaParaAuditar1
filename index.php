@@ -131,7 +131,7 @@ function VerDatos()
   </div><div id="column-left" >
   <?php if(isset($_SESSION['pas'])){?>
              
-                <div style=" border-radius:4px; color:#000000; font-size:12px;">Bienvenido..<?php  $pas=$_SESSION['pas'];$sqll=mysql_query("select * from usuarios where clave='$pas'",$link); $f=mysql_fetch_array($sqll);echo $f['nombre'];  ?>..</div><?php echo'<a style="color:#FF0000; font-size:12px;"  href="cerrar session.php"> Cerrar Sesión</a>';?>
+                <div style=" border-radius:4px; color:#000000; font-size:12px;">Bienvenido..<?php  $pas=$_SESSION['pas'];$sqll=mysqli_query($link,"select * from usuarios where clave='$pas'"); $f=mysqli_fetch_array($sqll);echo $f['nombre'];  ?>..</div><?php echo'<a style="color:#FF0000; font-size:12px;"  href="cerrar session.php"> Cerrar Sesión</a>';?>
              
 			 <?php }else{ ?>
              
@@ -165,8 +165,8 @@ $t=0;
 $num=0;
 $aux = 2;
 
-$sql=mysql_query("select * from noticias  order by id_noticias desc limit 2",$link);
-$entrada=mysql_num_rows($sql);
+$sql=mysqli_query($link,"select * from noticias  order by id_noticias desc limit 2");
+$entrada=mysqli_num_rows($sql);
 if($inte==-1)
 		echo "error";
 	else
@@ -177,7 +177,7 @@ if($inte==-1)
 <DIV style=" box-shadow: 0 2px 5px #666666; border-radius:4px; border:1px solid #999999; background:#FFFFFF; margin-bottom:10px; margin-top:"><center><div class="label-warning" style=" margin-left:8px; margin-right:8px; height:25px;margin-top:10px; color:#FFFFFF;">
 Ultimas Noticias
 </div></center>
-<?php $fila=mysql_fetch_array($sql);
+<?php $fila=mysqli_fetch_array($sql);
 				$not=substr($fila['texto'],0,70);
 				?>
         <div class="index_not"> <img src="admin/noticias/<?php echo $fila['imagen']; ?>"  style="border:5px solid #FFF;"></div>
@@ -285,11 +285,11 @@ margin-bottom: 2px;"><p style=" color:#000000; margin-bottom:2px;">Comentario</p
     <center><div class="flexslider">
      <?php 
 			$sql_sl="select * from opciones_generales ";
-			$resultado_sl=mysql_query($sql_sl,$link);
-			$fil_sl=mysql_fetch_array($resultado_sl);
+			$resultado_sl=mysqli_query($link,$sql_sl);
+			$fil_sl=mysqli_fetch_array($resultado_sl);
 			$sql3="select * from opciones_generales ";
-			$resultado1=mysql_query($sql3,$link);
-			$fil=mysql_fetch_array($resultado1);
+			$resultado1=mysqli_query($link,$sql3);
+			$fil=mysqli_fetch_array($resultado1);
 			?>
       <ul class="slides">
         <li> <img alt="" src="admin/images/slider/<?php echo $fil_sl['ima1'];?>" />
@@ -322,9 +322,9 @@ margin-bottom: 2px;"><p style=" color:#000000; margin-bottom:2px;">Comentario</p
 <?php
 
 $query=("SELECT * FROM comentario ORDER BY id_comentario DESC");
-$consulta=mysql_query($query,$link);
+$consulta=mysqli_query($link,$query);
 
-while($row=mysql_fetch_assoc($consulta))
+while($row=mysqli_fetch_assoc($consulta))
 
 {
 
@@ -345,7 +345,7 @@ while($row=mysql_fetch_assoc($consulta))
 
 	
 
-	}mysql_free_result($consulta);
+	}mysqli_free_result($consulta);
 
 ?>
 

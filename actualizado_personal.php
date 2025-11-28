@@ -42,13 +42,13 @@ $fecha =date("d-M-Y-"); $hora=date('H:i:s'); $tiempo = $fecha."A las ".$hora;
  // con todo esto hecho entonces incluimos la conexion a la base de datos y empezamos a grabar los datos en dicha tabla
  
 include('conexion.php');
-$db=mysql_select_db($bd,$conexion);
+$db=mysqli_select_db($conexion,$bd);
 
 //almacenamos los datos en una variable
 $query= "UPDATE noticias SET titulo='$titulo',descripcion='$description',texto='$noticia',fecha='$fecha',imagen='$nombre' where id_noticia='$id'";
 
 // ejecutamos los datos de la variable
-$consulta=mysql_query($query,$conexion);
+$consulta=mysqli_query($conexion,$query);
 	if(!$consulta){
 		header('Location: '.$_SERVER['HTTP_REFERER'].'?error=no');
 		}else{

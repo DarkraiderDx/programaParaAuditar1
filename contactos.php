@@ -203,8 +203,8 @@ function VerDatos()
                   <?php   $link=conectarse();
 				  if(!isset($_POST['tipo_contacto']))
 				  {
-				$sql=mysql_query("select pais from pais",$link);
-				while($fila=mysql_fetch_array($sql))
+				$sql=mysqli_query($link,"select pais from pais");
+				while($fila=mysqli_fetch_array($sql))
 				{?>
                   <option><?php echo $fila['pais'];} ?></option>
                 </select>
@@ -239,8 +239,8 @@ function VerDatos()
 					else
 					{
 						$tipo_con=$_POST['tipo_contacto'];
-				$sql=mysql_query("select pais from pais",$link);
-				while($fila=mysql_fetch_array($sql))
+				$sql=mysqli_query($link,"select pais from pais");
+				while($fila=mysqli_fetch_array($sql))
 				{?>
                   <option><?php echo $fila['pais'];} ?></option>
                 </select>*</td>

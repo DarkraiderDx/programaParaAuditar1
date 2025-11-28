@@ -1,9 +1,9 @@
 <?php require_once('conexion.php'); 
-$link=conectarse();?>
-<?php require_once('funciones/fecha.php'); ?>
-<?php
-session_start();
 
+ require_once('funciones/fecha.php'); 
+
+session_start();
+$link=conectarse();
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -11,7 +11,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysql_real_escape_string") ? mysqli_real_escape_string(conectarse(),$theValue) : mysqli_escape_string(conectarse(),$theValue);
 
   switch ($theType) {
     case "text":
@@ -63,15 +63,15 @@ $colname_r_listatemas = "-1";
 										   
 										`foromensajes`.fecha_hora_msj_foro DESC", GetSQLValueString($colname_r_listatemas, "int"));
 $query_limit_r_listatemas = sprintf("%s LIMIT %d, %d", $query_r_listatemas, $startRow_r_listatemas, $maxRows_r_listatemas);
-$r_listatemas = mysql_query($query_limit_r_listatemas, $link) or die(mysql_error());
+$r_listatemas = mysqli_query( $link,$query_limit_r_listatemas) or die(mysql_error());
 
-$row_r_listatemas = mysql_fetch_assoc($r_listatemas);
+$row_r_listatemas = mysqli_fetch_assoc($r_listatemas);
 $row_r_listatemas['nombre'];
 if (isset($_GET['totalRows_r_listatemas'])) {
   $totalRows_r_listatemas = $_GET['totalRows_r_listatemas'];
 } else {
-  $all_r_listatemas = mysql_query($query_r_listatemas);
-  $totalRows_r_listatemas = mysql_num_rows($all_r_listatemas);
+  $all_r_listatemas = mysqli_query($link,$query_r_listatemas);
+  $totalRows_r_listatemas = mysqli_num_rows($all_r_listatemas);
 }
 $totalPages_r_listatemas = ceil($totalRows_r_listatemas/$maxRows_r_listatemas)-1;
 
@@ -228,9 +228,9 @@ $queryString_r_listatemas = sprintf("&totalRows_r_listatemas=%d%s", $totalRows_r
 				}
 
 				$query_r_nrespuestas = sprintf("SELECT * FROM foromensajes WHERE idmsj_resp_msj_foro = %s", GetSQLValueString($colname_r_nrespuestas, "int"));
-				$r_nrespuestas = mysql_query($query_r_nrespuestas, $link) or die(mysql_error());
-				$row_r_nrespuestas = mysql_fetch_assoc($r_nrespuestas);
-				$totalRows_r_nrespuestas = mysql_num_rows($r_nrespuestas);
+				$r_nrespuestas = mysqli_query($link,$query_r_nrespuestas) or die(mysqli_error());
+				$row_r_nrespuestas = mysqli_fetch_assoc($r_nrespuestas);
+				$totalRows_r_nrespuestas = mysqli_num_rows($r_nrespuestas);
 				echo "(Respuestas: ".$totalRows_r_nrespuestas.")";
 				?>
                 </td>
@@ -241,7 +241,7 @@ $queryString_r_listatemas = sprintf("&totalRows_r_listatemas=%d%s", $totalRows_r
         <tr>
           <td><img src="imagenes/spacer.gif" width="1" height="3"></td>
         </tr>
-        <?php } while ($row_r_listatemas = mysql_fetch_assoc($r_listatemas)); ?>
+        <?php } while ($row_r_listatemas = mysqli_fetch_assoc($r_listatemas)); ?>
     </table></td>
   </tr>
   <?php } // Show if recordset not empty ?>

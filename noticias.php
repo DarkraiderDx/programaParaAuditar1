@@ -127,12 +127,12 @@ $(document).ready(function(){
   <h4 style="color:#ffffff; margin-left:18px; width:225px; margin-bottom:5px; background:#B1BC2C; text-align:center; height:35px; padding-top:5px; font-size: 24px; text-shadow:0px 0px 4px #333333;">Noticias</h4>
 									<p><?php 
 $link=conectarse();
- $sql1=mysql_query("select * from noticias order by id_noticias desc ",$link);?>
+ $sql1=mysqli_query($link,"select * from noticias order by id_noticias desc ");?>
  
   <div style="margin-left:8px;">
         <!-- insert your sidebar items here -->
        <marquee direction="up" scrollamount="2" style="background-color: #FBFBFB0; width:90%; height:500px;border:2px solid #cccccc;padding:3px" ><br>
-        <?php while($fila1=mysql_fetch_array($sql1))
+        <?php while($fila1=mysqli_fetch_array($sql1))
 		{?>
             
 		<div style=" background:#F4F4F4; margin-bottom:15px; border-radius:4px; padding-bottom:5px; padding-top:10px; padding-left:8px; box-shadow: 0px 0px 4px #666666;  ">
@@ -152,13 +152,13 @@ $link=conectarse();
 
   <?php 
 		   $sql="select * from noticias ORDER BY id_noticias desc limit 3";
-		   $resultado=mysql_query($sql,$link);?><p></p><h1 style="color:#D9412B; font-size:25px; text-shadow:#FF9933 0px 0px 3px;"> Ultimas Noticias Publicadas</h1>
+		   $resultado=mysqli_query($link,$sql);?><p></p><h1 style="color:#D9412B; font-size:25px; text-shadow:#FF9933 0px 0px 3px;"> Ultimas Noticias Publicadas</h1>
 
 <p style="color:#D9412B; font-size:25px;">&nbsp;</p>
 	<center><div id="central3" style="width:65%;">
     
 		<?php $aux=0;?>
-          <?php  while($fila=mysql_fetch_array($resultado)){
+          <?php  while($fila=mysqli_fetch_array($resultado)){
 		if($aux==0){   
 	  ?>
       

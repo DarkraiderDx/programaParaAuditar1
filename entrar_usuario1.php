@@ -9,17 +9,17 @@ if((($usuario=='')||($password==''))){
 	}
 else{
 
-$sql=mysql_query("select * from administracion where correo = '$usuario' and clave='$password'",$link);
-$fila=mysql_fetch_assoc($sql);
+$sql=mysqli_query($link,"select * from administracion where correo = '$usuario' and clave='$password'");
+$fila=mysqli_fetch_assoc($sql);
 
-$sql1=mysql_query("select * from planificacion where correo = '$usuario' and clave='$password'",$link);
-$fila1=mysql_fetch_assoc($sql1);
+$sql1=mysqli_query($link,"select * from planificacion where correo = '$usuario' and clave='$password'");
+$fila1=mysqli_fetch_assoc($sql1);
 
-$sql2=mysql_query("select * from direccion where correo = '$usuario' and clave='$password'",$link);
-$fila2=mysql_fetch_assoc($sql2);
+$sql2=mysqli_query($link,"select * from direccion where correo = '$usuario' and clave='$password'");
+$fila2=mysqli_fetch_assoc($sql2);
 
-$sql3=mysql_query("select * from reg_proyecto where correo = '$usuario' and clave='$password'",$link);
-$fila3=mysql_fetch_assoc($sql3);
+$sql3=mysqli_query($link,"select * from reg_proyecto where correo = '$usuario' and clave='$password'");
+$fila3=mysqli_fetch_assoc($sql3);
 	
 //$result = mysql_query("SELECT * FROM personal WHERE correo = '$usuario' and clave='$password'",$link);
 
@@ -118,9 +118,9 @@ $men='Usuario  o clave Incorrecto ';
 }
 
 
-mysql_free_result($result);
+mysqli_free_result($result);
 
 
-mysql_close();
+mysqli_close();
 }
 ?>

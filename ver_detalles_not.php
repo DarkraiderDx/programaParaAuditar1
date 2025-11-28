@@ -122,17 +122,17 @@ $(document).ready(function(){
 
   </div></div><div id="column-left1" style="width:250px;">
  
-<?php $sql1=mysql_query("select * from noticias order by id_noticias desc ",$link);?>
+<?php $sql1=mysqli_query($link,"select * from noticias order by id_noticias desc ");?>
  
   <h4 style="color:#ffffff; margin-left:18px; width:225px; margin-bottom:5px; background:#B1BC2C; text-align:center; height:35px; padding-top:5px; font-size: 24px; text-shadow:0px 0px 4px #333333;">Noticias</h4>
 									<p><?php 
 $link=conectarse();
- $sql1=mysql_query("select * from noticias order by id_noticias desc ",$link);?>
+ $sql1=mysqli_query($link,"select * from noticias order by id_noticias desc ");?>
  
   <div style="margin-left:8px;">
         <!-- insert your sidebar items here -->
        <marquee direction="up" scrollamount="2" style="background-color: #FBFBFB0; width:90%; height:300px;border:2px solid #cccccc;padding:3px" ><br>
-        <?php while($fila1=mysql_fetch_array($sql1))
+        <?php while($fila1=mysqli_fetch_array($sql1))
 		{?>
             
 		<div style=" background:#F4F4F4; margin-bottom:15px; border-radius:4px; padding-bottom:5px; padding-top:10px; padding-left:8px; box-shadow: 0px 0px 4px #666666;  ">
@@ -155,8 +155,8 @@ $link=conectarse();
     <?php $link=conectarse();
 		  $id=$_GET['id'];
 		   $sql="select * from noticias where id_noticias='$id'";
-		   $resultado=mysql_query($sql,$link);
-		   while($fila=mysql_fetch_array($resultado))
+		   $resultado=mysqli_query($link,$sql);
+		   while($fila=mysqli_fetch_array($resultado))
 		   {
 		   
 		    ?>
@@ -164,7 +164,7 @@ $link=conectarse();
           <div align="right" style="font-size:12px;"><?php echo $fila['fecha']; ?></div>
 		  </div>
           <div style="text-align:justify;"><img src="admin/noticias/<?php echo $fila['imagen']; ?>"/class="foto_img"><?php echo $fila['texto']; ?></div>
-  <?php }mysql_free_result($resultado); ?>
+  <?php }mysqli_free_result($resultado); ?>
   </div><!--fin central-->
     
 	

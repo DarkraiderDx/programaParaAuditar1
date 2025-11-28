@@ -1,13 +1,34 @@
 <?php
 session_start();
-	include("conexion.php");
-	$link=conectarse();
-	
-	$qry="Select * from convocatorias where id_convocatorias={$_REQUEST['id']}";
-	$res=mysql_query($qry) or die(mysql_error()." qry::$qry");
-	$obj=mysql_fetch_object($res);		
-	header("Content-type: {$obj->tipo}");
-	header('Content-Disposition: attachment; filename="'.$obj->nombre_archi.'"');
-	print $obj->archivo;
-	mysql_close();
+
+include("conexion.php");
+$link = conectarse();
+
+// Proteger el ID contra inyección SQL
+$id = intval($_REQUEST['id']);
+
+$qry = "SELECT * FROM convocatorias WHERE id_convocatorias = $id";
+
+// Ejecutar consulta con MySQLi
+$res = mysqli_query($link, $qry);
+
+if (!$res) {
+    die("Error en la consulta: " . mysqli_error($link) . " || qry::$qry");
+}
+
+$obj = mysqli_fetch_object($res);
+
+if (!$obj) {
+    die("No existe el archivo solicitado.");
+}
+
+// Encabezados de descarga
+header("Content-Type: {$obj->tipo}");
+header('Content-Disposition: attachment; filename="'.$obj->nombre_archi.'"');
+
+// Mostrar archivo
+echo $obj->archivo;
+
+// Cerrar conexión
+mysqli_close($link);
 ?>
